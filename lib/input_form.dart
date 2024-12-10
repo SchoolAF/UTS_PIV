@@ -24,6 +24,7 @@ class _MyInputFormState extends State<MyInputForm> {
 
   String? _validatePhone(String? value) {
     if (value!.isEmpty) return 'Phone number wajib diisi';
+    if (!value.startsWith('62')) return "Phone number must start with 62";
     if (double.tryParse(value) == null) return "Only numbers allowed!";
     return null;
   }
