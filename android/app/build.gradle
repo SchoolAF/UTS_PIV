@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.latihan"
+    namespace = "me.buxxed.piv.uts"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.latihan"
+        applicationId = "me.buxxed.piv.uts"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

@@ -1,4 +1,4 @@
-package com.example.latihan
+package me.buxxed.piv.uts
 
 import io.flutter.embedding.android.FlutterActivity
 
