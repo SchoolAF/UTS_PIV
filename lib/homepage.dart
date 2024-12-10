@@ -102,7 +102,7 @@ class Homepage extends StatelessWidget {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            'NPM: 714220066',
+                            '714220066',
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.onSecondary,
                               fontSize: 12,
