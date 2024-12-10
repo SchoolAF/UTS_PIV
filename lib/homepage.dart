@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
+
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +49,16 @@ class Homepage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            // 2x1 tiles instead of the first info card
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Tile 1: Name
                 Expanded(
                   child: Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    color: Theme.of(context)
-                        .colorScheme
-                        .secondary, // Set accent color as background
+                    color: Theme.of(context).colorScheme.secondary,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
@@ -58,17 +66,13 @@ class Homepage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.person_outline,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondary, // Adjust icon color
+                            color: Theme.of(context).colorScheme.onSecondary,
                           ),
                           SizedBox(height: 8),
                           Text(
                             'Aliffathur Muhammad Revan',
                             style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSecondary, // Adjust text color
+                              color: Theme.of(context).colorScheme.onSecondary,
                               fontSize: 12,
                             ),
                             maxLines: 1,
@@ -80,16 +84,13 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 8),
-                // Tile 2: NPM
                 Expanded(
                   child: Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    color: Theme.of(context)
-                        .colorScheme
-                        .secondary, // Set accent color as background
+                    color: Theme.of(context).colorScheme.secondary,
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
@@ -97,23 +98,156 @@ class Homepage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.confirmation_number_outlined,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondary, // Adjust icon color
+                            color: Theme.of(context).colorScheme.onSecondary,
                           ),
                           SizedBox(height: 8),
                           Text(
                             'NPM: 714220066',
                             style: TextStyle(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSecondary, // Adjust text color
+                              color: Theme.of(context).colorScheme.onSecondary,
                               fontSize: 12,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _launchURL('https://github.com/herobuxx'),
+                    child: Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.github,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'GitHub',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _launchURL('mailto:me@buxxed.me'),
+                    child: Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.email_outlined,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Email',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _launchURL('https://x.com/iamherobuxx'),
+                    child: Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.alternate_email,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Twitter/X',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => _launchURL('https://buxxed.me'),
+                    child: Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.web_outlined,
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Website',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
